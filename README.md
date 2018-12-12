@@ -1,6 +1,6 @@
 # Hate Speech Detection
 
-This project is part of the https://www.meetup.com/Data-for-Good-Israel/ and it's scope to detect hate speeches on Twitter (especialy racism, harassment and homophobic speeches)
+This project is part of the https://www.meetup.com/Data-for-Good-Israel/ and its scope to detect hate speeches on Twitter (especialy racism, harassment and homophobic speeches)
 
 ### Installation
 HateSpeachDetector runs on python 3.5.2
@@ -16,6 +16,7 @@ $ pip3 -r src/requirements.txt
 ```
 
 **Configuration & Twitter API keys:**
+
 In order to connect to Twitter API, you must sign-in for Twitter, and request develper account - https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html
 
 Then you must get 4 keys:
