@@ -3,7 +3,7 @@
 This project is part of the https://www.meetup.com/Data-for-Good-Israel/ and its scope to detect hate speeches on Twitter (especialy racism, harassment and homophobic speeches)
 
 ### Installation
-HateSpeachDetector runs on python 3.5.2
+HateSpeachDetector runs on python 3.6.7
 
 **Get the code:**
 ```
@@ -47,5 +47,5 @@ access_token_secret=your_access_token_secret_keys
 **Getting Tweets:**
 ```
 $ cd hate_speech_detection/src/
-$ python3 twitter_reader.py --num-of-tweets 4
+$ python3 twitter_reader.py --num-of-tweets 4 --output output_file_path
 ```
