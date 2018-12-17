@@ -7,6 +7,7 @@ from tweepy import Stream
 import tweepy
 import re
 import jsonlines
+from tqdm import tqdm
 
 HASHTAG_REGEX = re.compile(r"#(\w+)")
 
@@ -28,17 +29,18 @@ class TwitterReader(object):
 
         user = api.me()
 
-        with jsonlines.open(self._output, 'w') as writer:
-            for tweet in tweepy.Cursor(api.search,
-                                       "*",
-                                       lang="en").items(self._tweets_to_read):
+        with tqdm(total=self._tweets_to_read) as pbar:
+            with jsonlines.open(self._output, 'w') as writer:
+                for tweet in tweepy.Cursor(api.search,
+                                           "*",
+                                           lang="en").items(self._tweets_to_read):
 
-                hashtags = self._get_hashtags(tweet=tweet.text)
+                    hashtags = self._get_hashtags(tweet=tweet.text)
 
-                self._write_to_file(writer=writer,
-                                    tweet_text=tweet.text,
-                                    hashtags=hashtags)
-
+                    self._write_to_file(writer=writer,
+                                        tweet_text=tweet.text,
+                                        hashtags=hashtags)
+                    pbar.update(1)
 
     def _write_to_file(self, writer, tweet_text, hashtags):
         data = {}
